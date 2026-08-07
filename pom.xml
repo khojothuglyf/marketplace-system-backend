@@ -13,7 +13,7 @@
 
     <groupId>com.marketplacesystem</groupId>
     <artifactId>marketplace-system</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>Marketplace System</name>
     <description>Backend REST API for the Marketplace System e-commerce application</description>
 
@@ -39,6 +39,10 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -85,6 +89,7 @@
     </dependencies>
 
     <build>
+        <finalName>marketplace-system</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

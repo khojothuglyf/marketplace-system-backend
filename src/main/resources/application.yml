@@ -34,6 +34,16 @@ app:
   jwt:
     secret: ${JWT_SECRET:marketplace-system-dev-secret-key-change-me-in-production-0123456789}
     expiration-ms: ${JWT_EXPIRATION_MS:86400000}
+  cors:
+    # Comma-separated list of allowed origins. "*" (default) allows any
+    # origin and is intended for local development; override with
+    # CORS_ALLOWED_ORIGINS in production.
+    allowed-origins: ${CORS_ALLOWED_ORIGINS:*}
+  bootstrap:
+    # Admin account seeded on startup when none exists. Override both in
+    # production (application-prod.yml requires ADMIN_INITIAL_PASSWORD).
+    admin-email: ${ADMIN_INITIAL_EMAIL:admin@marketplace.com}
+    admin-password: ${ADMIN_INITIAL_PASSWORD:AdminPass123}
 
 server:
   port: 8080
