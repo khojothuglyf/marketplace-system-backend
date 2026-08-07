@@ -30,8 +30,8 @@ public interface PaymentRepository extends JpaRepository<Payment, Long> {
 
     long countByStatus(PaymentStatus status);
 
-    @Query("select function('date', p.paidAt), sum(p.amount) from Payment p "
+    @Query("select cast(p.paidAt as date), sum(p.amount) from Payment p "
             + "where p.status = :status and p.paidAt >= :start "
-            + "group by function('date', p.paidAt) order by function('date', p.paidAt)")
+            + "group by cast(p.paidAt as date) order by cast(p.paidAt as date)")
     List<Object[]> findRevenueTimeline(@Param("status") PaymentStatus status, @Param("start") LocalDateTime start);
 }

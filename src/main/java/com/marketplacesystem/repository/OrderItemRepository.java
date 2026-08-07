@@ -51,9 +51,9 @@ public interface OrderItemRepository extends JpaRepository<OrderItem, Long> {
     List<Object[]> findSalesByCategoryForSeller(@Param("sellerId") Long sellerId,
                                                 @Param("excluded") OrderStatus excluded);
 
-    @Query("select function('date', o.order.createdAt), sum(o.subtotal) from OrderItem o "
+    @Query("select cast(o.order.createdAt as date), sum(o.subtotal) from OrderItem o "
             + "where o.product.seller.id = :sellerId and o.order.status <> :excluded and o.order.createdAt >= :start "
-            + "group by function('date', o.order.createdAt) order by function('date', o.order.createdAt)")
+            + "group by cast(o.order.createdAt as date) order by cast(o.order.createdAt as date)")
     List<Object[]> findRevenueTimelineForSeller(@Param("sellerId") Long sellerId,
                                                 @Param("excluded") OrderStatus excluded,
                                                 @Param("start") java.time.LocalDateTime start);
